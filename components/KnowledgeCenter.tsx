@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { BookOpen, FileCode, Shield, Terminal, ArrowRight } from 'lucide-react';
 
 export default function KnowledgeCenter() {
@@ -10,28 +11,32 @@ export default function KnowledgeCenter() {
       category: 'Technical Whitepaper',
       desc: 'Deep-dive into AWS DynamoDB single-table schema, S3 KMS encryption, and distributed async RabbitMQ workers.',
       icon: Terminal,
-      time: '12 min read'
+      time: '12 min read',
+      href: '/resources/architecture-data-model'
     },
     {
       title: 'SOC2 Type II & HIPAA Compliance Blueprint',
       category: 'Regulatory Guide',
       desc: 'Step-by-step guidance on automated policy attestations, continuous audit logs, and employee offboarding SCIM de-provisioning.',
       icon: Shield,
-      time: '8 min read'
+      time: '8 min read',
+      href: '/resources/soc2-hipaa-blueprint'
     },
     {
       title: 'Visual BPM & Workflow Design Handbook',
       category: 'Practitioner Guide',
       desc: 'How to build multi-level conditional approval chains, SLA timers, and AI-driven document extraction pipelines.',
       icon: BookOpen,
-      time: '15 min read'
+      time: '15 min read',
+      href: '/resources/bpm-handbook'
     },
     {
       title: 'REST API Reference & OpenAPI Specs',
       category: 'Developer Hub',
       desc: 'Comprehensive API documentation for document ingestion, case creation, webhook dispatches, and CMIS integrations.',
       icon: FileCode,
-      time: 'Interactive Docs'
+      time: 'Interactive Docs',
+      href: '/resources/api-reference'
     }
   ];
 
@@ -50,21 +55,22 @@ export default function KnowledgeCenter() {
               Statutory compliance guides, system blueprints, and developer references created by our architecture team.
             </p>
           </div>
-          <a
-            href="mailto:support@letssave.in"
+          <Link
+            href="/resources"
             className="inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-teal-900 transition-colors shrink-0 font-heading"
           >
-            <span>Request Full PDF Package</span>
+            <span>Open the resource library</span>
             <ArrowRight size={16} />
-          </a>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {resources.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div
+              <Link
                 key={idx}
+                href={item.href}
                 className="p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-teal-400 hover:shadow-lg transition-all flex flex-col justify-between group"
               >
                 <div>
@@ -88,7 +94,7 @@ export default function KnowledgeCenter() {
                     Read &rarr;
                   </span>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
